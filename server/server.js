@@ -15,10 +15,38 @@ app.use(express.static(publicPath))
 io.on('connection',(socket)=>{
     console.log('A new user connected...')
     
-//once connected we can use this builtin eventlistener 'disconnect' to see if the user gets disconneted
+    //listening for our custom eventlistener 'createMessage'
+    //emitted by the client..
+    socket.on('createMessage',(message)=>{
+        console.log(message)
+    })
+
+    //emitting to the client side
+    //this will be displayed only to the current user who connects
+    //i.e. simply displaying a display message when user connects to the room
+    socket.emit('newMessage',{
+        from : "Server",
+        text : "Welcome to the quickChat room",
+        date : new Date().getTime()
+    })
+
+    //now this will broadcast the message to all the user
+    //that a new user has connected to the room
+    //all including the user itself who joined.
+    //to broadcast to all the user including the current user
+    //then use : io.emit()
+    socket.broadcast.emit('newMessage',{
+        from : "Server",
+        text : "New user joined",
+        date : new Date().getTime()
+    })
+
+    //once connected we can use this builtin eventlistener 'disconnect' to see if the user gets disconneted
     socket.on('disconnect',()=>{
         console.log('User disconnected....')
     })
+    
+
 })
 
-server.listen(port,()=>{console.log(`listening on port ${3000}`);})
+server.listen(port,()=>{console.log(`listening on port ${port}`);})
