@@ -35,9 +35,9 @@ chatForm.addEventListener('submit',(e)=>{
 
     //Get message text from the chatform by id=msg
     const message = e.target.elements.msg.value
-
     //emit the message to the server
-    socket.emit('chatMessage',message)
+    message.trim() && socket.emit('chatMessage',message)
+
 
     //clears out the input and automatically focuses on it
     e.target.elements.msg.value=''
