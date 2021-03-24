@@ -1,0 +1,33 @@
+{
+  "name": "quickchat",
+  "version": "1.0.0",
+  "description": "A realtime chat application built using nodejs and socket.io",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^4.0.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "start": "node server",
+    "test": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaviPabari/quickChat.git"
+  },
+  "keywords": [
+    "nodejs",
+    "socketio"
+  ],
+  "author": "Ravi Pabari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RaviPabari/quickChat/issues"
+  },
+  "homepage": "https://github.com/RaviPabari/quickChat#readme"
+}
